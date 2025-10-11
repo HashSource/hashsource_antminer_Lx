@@ -1,0 +1,595 @@
+2025-10-11 00:46.26 [debug    ] Logging configured             extract_root=. pid=153984 vebosity_level=0
+2025-10-11 00:46.26 [info     ] Start processing file          file=update.no_header.image pid=153984
+2025-10-11 00:46.26 [debug    ] Setting up signal handlers     original_signal_handlers={<Signals.SIGINT: 2>: <built-in function default_int_handler>, <Signals.SIGTERM: 15>: <Handlers.SIG_DFL: 0>} pid=153984
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=Linux rev 0.0 ext2 filesystem data, UUID=00000000-0000-0000-0000-000000000000, volume name "linux"\012- data path=update.no_header.image pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image pid=153985 size=0x6400000
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=extfs pid=153985 real_offset=0x0 start_offset=0x438
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x6400000 handler=extfs pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x6400000] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Running extract command        command=debugfs -R 'rdump / "/home/danielsokil/Lab/HashSource/hashsource_antminer_Lx/bitmain_firmware/sd-recover-bmu-L7-fixed-202201241601-release/update.no_header.image_extract"' /home/danielsokil/Lab/HashSource/hashsource_antminer_Lx/bitmain_firmware/sd-recover-bmu-L7-fixed-202201241601-release/update.no_header.image pid=153985
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract pid=153986
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/sbin pid=153987
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/proc pid=153988
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/lib pid=153990
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/lost+found pid=153989
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/run pid=153991
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/mnt pid=153992
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/bin pid=153993
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/opt pid=153985
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/sys pid=153986
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/dev pid=153994
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/media pid=153995
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/tmp pid=153997
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib32 pid=153996
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/usr pid=153998
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/etc pid=153999
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/root pid=154000
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/linuxrc pid=153988
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/var pid=153985
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/config pid=153996
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/iproute pid=153991
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/freeramdisk pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/ipaddr pid=153988
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/iplink pid=153987
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/ifconfig pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/route pid=153994
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/getty pid=153990
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/swapon pid=153996
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/poweroff pid=153997
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/pidof pid=154000
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/swapoff pid=153993
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/start-stop-daemon pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/syslogd pid=153988
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/udhcpc pid=153987
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/ip pid=153994
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/sbin/reboot pid=153996
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libutil.so.1 pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libanl.so.1 pid=153987
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libstdc++.so.6 pid=153994
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libnss_files.so.2 pid=153993
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libatomic.so.1 pid=153994
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libnss_dns.so.2 pid=153993
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=ff34c7ee5cc061bcaea8d450683ee4ab7c0107f7, stripped\012- data path=update.no_header.image_extract/sbin/shutdown pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=45875fc5be9acb9cd82310e321d4f8b97275a56c, stripped\012- data path=update.no_header.image_extract/sbin/halt pid=153992
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/librt.so.1 pid=153993
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=POSIX shell script text executable\012- a /bin/sh script, ASCII text executable path=update.no_header.image_extract/init pid=153986
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/sbin/shutdown pid=153985 size=0x46a8
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=7a2c0aea94aa32b3f7815d24f89f0e68dfde4d09, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libnss_dns-2.25.so pid=154000
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=d71589516de5a642ad7bbc7b418277ad305bc37c, stripped\012- data path=update.no_header.image_extract/sbin/killall5 pid=153997
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153985 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=de0131c0e7cba8cca38ec7af24ab2fad2eabd3e1, stripped\012- data path=update.no_header.image_extract/sbin/init pid=153990
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/sbin/halt pid=153992 size=0x3614
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (GNU/Linux), dynamically linked, BuildID[sha1]=45b99f5ff08af2473f5b5d64ad61365ac37f8f5b, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/librt-2.25.so pid=153996
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/init pid=153986 size=0xb2
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=c82543922edc7a73cc00db9bae2074c8a4f86059, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libutil-2.25.so pid=153994
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=2e6612f7272a8d1431e996e37544cb4d49f684f6, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libnsl-2.25.so pid=153987
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/sbin/init pid=153990 size=0x8910
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libc.so.6 pid=153995
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libutil-2.25.so pid=153994 size=0x25d4
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libnss_dns-2.25.so pid=154000 size=0x35c0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/sbin/killall5 pid=153997 size=0x4640
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=ab600f2137f87a1b132b5b371f99e9fa7defeff6, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libanl-2.25.so pid=153993
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libresolv.so.2 pid=153995
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libnsl-2.25.so pid=153987 size=0xd720
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=d52cf78393313bab76d284927bc6b7ace926e47a, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libm-2.25.so pid=153989
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/librt-2.25.so pid=153996 size=0x5774
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libm.so.6 pid=153999
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/ld-linux-armhf.so.3 pid=153998
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libanl-2.25.so pid=153993 size=0x36e8
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libnsl.so.1 pid=153999
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libcrypt.so.1 pid=153998
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libpthread.so.0 pid=153998
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libm-2.25.so pid=153989 size=0x6b5a0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=2c613beb37c72d412bf082e15de0930dad23930a, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libnss_files-2.25.so pid=153995
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libnss_files-2.25.so pid=153995 size=0x7608
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (GNU/Linux), dynamically linked, BuildID[sha1]=d4b691a2611056a5bd45e136f939445084060af4, stripped\012- data path=update.no_header.image_extract/lib/libstdc++.so.6.0.24 pid=153991
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=d0e0673169922a8565cfba288e8e72268b0adcab, not stripped\012- data path=update.no_header.image_extract/lib/ld-2.25.so pid=153998
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=Python script, ASCII text executable path=update.no_header.image_extract/lib/libstdc++.so.6.0.24-gdb.py pid=153988
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/ld-2.25.so pid=153998 size=0x1df80
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (GNU/Linux), dynamically linked, BuildID[sha1]=de9110e975308a3c0280b1dc458f30497305aa2b, stripped\012- data path=update.no_header.image_extract/lib/libatomic.so.1.2.0 pid=153999
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libstdc++.so.6.0.24-gdb.py pid=153988 size=0xaa0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libatomic.so.1.2.0 pid=153999 size=0x5510
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libstdc++.so.6.0.24 pid=153991 size=0xf8dd0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x46a8 handler=elf32 pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x46a8] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/lib/debug pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, BuildID[sha1]=29d2084824752ff6e284376bc074962e3b843c6c, for GNU/Linux 3.2.0, not stripped\012- data path=update.no_header.image_extract/lib/libpthread-2.25.so pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libpthread-2.25.so pid=153985 size=0x1a0e8
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153985 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x1a0e8 handler=elf32 pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x1a0e8] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/libdl.so.2 pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=273428885d923e7888e7bbdca379aa2bfbf43804, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libresolv-2.25.so pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libresolv-2.25.so pid=153985 size=0xc6b4
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153985 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0xc6b4 handler=elf32 pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0xc6b4] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, BuildID[sha1]=aa86e880abaf96e2ce86bb676eb24ed234025e31, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libc-2.25.so pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libc-2.25.so pid=153985 size=0xdb6e8
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153985 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0xdb6e8 handler=elf32 pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0xdb6e8] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=837f483b7ad06cbe437718b165d6c5e3ace61541, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libdl-2.25.so pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libdl-2.25.so pid=153985 size=0x25b8
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153985 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x25b8 handler=elf32 pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x25b8] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=4b01afc7b929482446303e51dd8600249d9161ac, for GNU/Linux 3.2.0, stripped\012- data path=update.no_header.image_extract/lib/libcrypt-2.25.so pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libcrypt-2.25.so pid=153985 size=0x7640
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153985 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x7640 handler=elf32 pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x7640] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=be9c85ccca295c47cc30be32e4a41191fcf568db, stripped\012- data path=update.no_header.image_extract/lib/libgcc_s.so.1 pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/libgcc_s.so.1 pid=153985 size=0x1862c
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153985 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x1862c handler=elf32 pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x1862c] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/dev/stderr pid=153985
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/dev/shm pid=153985
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/dev/pts pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/dev/log pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/dev/stdin pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/dev/stdout pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/dev/fd pid=153985
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/var/lib pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/var/run pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/var/lock pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/var/cache pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/var/spool pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/var/tmp pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/var/log pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/stty pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/more pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/chmod pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/pwd pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/grep pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/ls pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=0918a5884b2a8cb7b5b9753441356aca384cc54b, stripped\012- data path=update.no_header.image_extract/bin/busybox pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/bin/busybox pid=153985 size=0x62b3c
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153985 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x62b3c handler=elf32 pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x62b3c] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/arch pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/printenv pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/chown pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/hostname pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/rmdir pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/ln pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/netstat pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/egrep pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/su pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/vi pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/mktemp pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/false pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/dmesg pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/link pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/mknod pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/true pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/umount pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/df pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/echo pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/dd pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/rm pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/fgrep pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/sleep pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/touch pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/base64 pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/ping pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/gunzip pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/kill pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/nice pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/date pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/login pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/mount pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/sed pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/setpriv pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/mv pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/sync pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/tar pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/ash pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/setserial pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/ps pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/cat pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/dnsdomainname pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/cp pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/mkdir pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/uname pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/usleep pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/bin/sh pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/hosts pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/hosts pid=153985 size=0x27
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/bitmain.pub pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/bitmain.pub pid=153985 size=0x1c3
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/group pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/group pid=153985 size=0x133
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/services pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/services pid=153985 size=0x2a79
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/nsswitch.conf pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/nsswitch.conf pid=153985 size=0xe6
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/hostname pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/hostname pid=153985 size=0x9
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/shadow.factory pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/shadow.factory pid=153985 size=0x2fe
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/etc/ssl pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/passwd pid=153985
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153992 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153997 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/passwd pid=153985 size=0x154
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=154000 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/shells pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/shells pid=153985 size=0x8
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/etc/init.d pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/etc/mtab pid=153985
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153995 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153996 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153990 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/profile pid=153985
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153989 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/profile pid=153985 size=0x19e
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/etc/os-release pid=153985
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/etc/udhcpc pid=153985
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153998 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153993 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/etc/profile.d pid=153985
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153999 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153988
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x4640 handler=elf32 pid=153997
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153986
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x4640] pid=153997
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153997 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x3614 handler=elf32 pid=153992
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x3614] pid=153992
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/etc/resolv.conf pid=153988
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153992 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/inittab pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/inittab pid=153985 size=0x3ad
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153994 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/usr/sbin pid=153985
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x35c0 handler=elf32 pid=154000
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x35c0] pid=154000
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/usr/lib pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=154000 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153987 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/issue pid=153986
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/issue pid=153986 size=0x14
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153986
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/usr/bin pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib32 pid=153986
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/lib/debug/libstdc++.so.6 pid=153986
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/var/lib/misc pid=153986
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x7608 handler=elf32 pid=153995
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x7608] pid=153995
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/shadow pid=153997
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/fstab pid=153992
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153995 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x8910 handler=elf32 pid=153990
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x5774 handler=elf32 pid=153996
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/protocols pid=153988
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x8910] pid=153990
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x5774] pid=153996
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153990 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153996 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/shadow pid=153997 size=0xf4
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/fstab pid=153992 size=0x14e
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/protocols pid=153988 size=0xab8
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153997
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153992
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153988
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/etc/ssl/private pid=153995
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/etc/ssl/misc pid=153997
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (GNU/Linux), dynamically linked, BuildID[sha1]=581dc6fe25c36ae838caeeab8e4e18791e65a03d, stripped\012- data path=update.no_header.image_extract/lib/debug/libstdc++.so.6.0.24 pid=154000
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/etc/ssl/certs pid=153992
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x6b5a0 handler=elf32 pid=153989
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x6b5a0] pid=153989
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153989 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/ssl/ct_log_list.cnf.dist pid=153986
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x1df80 handler=elf32 pid=153998
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x1df80] pid=153998
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=POSIX shell script text executable\012- a /bin/sh script, ASCII text executable path=update.no_header.image_extract/etc/init.d/rcS pid=153997
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x36e8 handler=elf32 pid=153993
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153998 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/ssl/ct_log_list.cnf.dist pid=153986 size=0x19c
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x36e8] pid=153993
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153986
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=POSIX shell script text executable\012- a /bin/sh script, ASCII text executable path=update.no_header.image_extract/etc/init.d/S20urandom pid=153992
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153993 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/init.d/rcS pid=153997 size=0x197
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=POSIX shell script text executable\012- a /bin/sh script, ASCII text executable path=update.no_header.image_extract/etc/init.d/rcK pid=153988
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153997
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/init.d/S20urandom pid=153992 size=0x4f8
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153992
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/init.d/rcK pid=153988 size=0x1a7
+2025-10-11 00:46.26 [debug    ] Processing directory           path=update.no_header.image_extract/etc/udhcpc/default.script.d pid=153998
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153988
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/sbin/flash_eraseall pid=153992
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/sbin/ether-wake pid=153992
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x5510 handler=elf32 pid=153999
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=0c0b403bed7415a4bc2705f9c536de5a732d7d53, stripped\012- data path=update.no_header.image_extract/usr/sbin/ubimkvol pid=153998
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=POSIX shell script text executable\012- a /bin/sh script, ASCII text executable path=update.no_header.image_extract/etc/init.d/S01syslogd pid=153986
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/ssl/ct_log_list.cnf pid=153996
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=POSIX shell script text executable\012- a /bin/sh script, ASCII text executable path=update.no_header.image_extract/etc/udhcpc/default.script pid=153997
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=b8be8d54b6ddb394ef54c5691237c599f3a2d159, stripped\012- data path=update.no_header.image_extract/usr/sbin/ubiformat pid=153988
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/init.d/S01syslogd pid=153986 size=0x3f4
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/ubimkvol pid=153998 size=0x6608
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/ssl/ct_log_list.cnf pid=153996 size=0x19c
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153986
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/udhcpc/default.script pid=153997 size=0x783
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/lib/debug/libstdc++.so.6.0.24 pid=154000 size=0x11ed3c
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153998 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153996
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=81375369a266e53d73062dadc4750fc12e6d3774, stripped\012- data path=update.no_header.image_extract/usr/sbin/ubidetach pid=153992
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153997
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/ubiformat pid=153988 size=0xf648
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x5510] pid=153999
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=154000 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153999 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=POSIX shell script text executable\012- a /bin/sh -e script, ASCII text executable path=update.no_header.image_extract/etc/init.d/Update.sh pid=153995
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/sbin/chroot pid=153996
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/ubidetach pid=153992 size=0x55d4
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x6608 handler=elf32 pid=153998
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/ssl/openssl.cnf pid=153985
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x25d4 handler=elf32 pid=153994
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153988 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x6608] pid=153998
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x25d4] pid=153994
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153998 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153992 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x11ed3c handler=elf32 pid=154000
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153994 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/init.d/Update.sh pid=153995 size=0x16a6
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x11ed3c] pid=154000
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=154000 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/ssl/openssl.cnf pid=153985 size=0x2a9d
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153995
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=fed536d5c7548045acdedac5efea2caa22917c6f, stripped\012- data path=update.no_header.image_extract/usr/sbin/flash_erase pid=153986
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153985
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x55d4 handler=elf32 pid=153992
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x55d4] pid=153992
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153992 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=POSIX shell script text executable\012- a /bin/sh script, ASCII text executable path=update.no_header.image_extract/etc/init.d/S37bitmainer_setup pid=153989
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/flash_erase pid=153986 size=0x75e4
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/sbin/deluser pid=153994
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0xd720 handler=elf32 pid=153987
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/profile.d/umask.sh pid=153993
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=2e16f80e971d9701e34794f9b131f31046813c87, stripped\012- data path=update.no_header.image_extract/usr/sbin/mtdinfo pid=153996
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153986 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=7a81eefe335593e163fa78c7ef7ba8a8f5361620, stripped\012- data path=update.no_header.image_extract/usr/sbin/ubirmvol pid=153999
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0xd720] pid=153987
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/init.d/S37bitmainer_setup pid=153989 size=0xd79
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/sbin/adduser pid=153992
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153987 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153989
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/profile.d/umask.sh pid=153993 size=0xa
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=6f6fbb49531ca000f4a8484aad32c26e3a9bef18, stripped\012- data path=update.no_header.image_extract/usr/sbin/nanddump pid=153998
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/mtdinfo pid=153996 size=0x95e8
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/sbin/fsfreeze pid=153992
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/ubirmvol pid=153999 size=0x55d0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153993
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=e79d1cef6f5060c6bad4b0fa3d80d4684cafe7e1, stripped\012- data path=update.no_header.image_extract/usr/sbin/nandwrite pid=153995
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=37fb1e5c58056ef449d9200cea874bbcb5a1dca7, stripped\012- data path=update.no_header.image_extract/usr/sbin/ubinfo pid=153997
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153996 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153999 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libz.so pid=153989
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/nanddump pid=153998 size=0x85e8
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libssl.so pid=153993
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=48fd96353e0c995106de5bc33c4187599120219b, stripped\012- data path=update.no_header.image_extract/usr/sbin/ubiattach pid=153994
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153998 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/nandwrite pid=153995 size=0x85e4
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/ubinfo pid=153997 size=0x65f0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x95e8 handler=elf32 pid=153996
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x95e8] pid=153996
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent-2.1.so.6 pid=153993
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x55d0 handler=elf32 pid=153999
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153996 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x55d0] pid=153999
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153997 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x85e8 handler=elf32 pid=153998
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/sbin/ubiattach pid=153994 size=0x65f4
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153999 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x85e8] pid=153998
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=594c68e7d6986d6ee98486c48e4aa1976732fbba, stripped\012- data path=update.no_header.image_extract/usr/lib/libevent_openssl-2.1.so.6.0.2 pid=153992
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153995 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153998 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153994 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x65f0 handler=elf32 pid=153997
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libevent_openssl-2.1.so.6.0.2 pid=153992 size=0x4644
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x65f0] pid=153997
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent.so pid=153999
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x85e4 handler=elf32 pid=153995
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153997 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153992 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x65f4 handler=elf32 pid=153994
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x85e4] pid=153995
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=9838453603cd3e1d5dada92a601cba354fc1f531, stripped\012- data path=update.no_header.image_extract/usr/lib/libz.so.1.2.11 pid=153987
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent_pthreads-2.1.so.6 pid=153985
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=d0bec76e22ad7e52b84389f868f7e9684e8c20a7, stripped\012- data path=update.no_header.image_extract/usr/lib/libevent-2.1.so.6.0.2 pid=153989
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x65f4] pid=153994
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153995 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libaio.so.1 pid=153999
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153994 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=e7ee53247586f685a4c4fa310d8ef259e6f4753c, stripped\012- data path=update.no_header.image_extract/usr/lib/libdaemon.so.0.5.0 pid=153993
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent_pthreads.so pid=153985
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x4644 handler=elf32 pid=153992
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libdaemon.so.0 pid=153997
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x4644] pid=153992
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libaio.so pid=153998
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153992 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libexpat.so.1 pid=153985
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libz.so.1.2.11 pid=153987 size=0x13610
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent_core-2.1.so.6 pid=153994
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libdaemon.so.0.5.0 pid=153993 size=0x55f4
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libdaemon.so pid=153998
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153993 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153987 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libevent-2.1.so.6.0.2 pid=153989 size=0x47cd8
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=5b59e69a9553214604f6d9303b352593d052deac, stripped\012- data path=update.no_header.image_extract/usr/lib/libexpat.so.1.6.10 pid=153996
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libcrypto.so pid=153998
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libexpat.so pid=153992
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153989 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x55f4 handler=elf32 pid=153993
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent_openssl.so pid=153998
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent_core.so pid=153992
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x55f4] pid=153993
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x13610 handler=elf32 pid=153987
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153993 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x13610] pid=153987
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153987 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent_extra-2.1.so.6 pid=153998
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/etc/ssl/openssl.cnf.dist pid=153990
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=d48fd35f87fba0cc3946b85af537a32928270b7d, stripped\012- data path=update.no_header.image_extract/usr/lib/libevent_extra-2.1.so.6.0.2 pid=153995
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ASCII text path=update.no_header.image_extract/usr/lib/os-release pid=153997
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x47cd8 handler=elf32 pid=153989
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libexpat.so.1.6.10 pid=153996 size=0x2b5d0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x47cd8] pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libz.so.1 pid=153993
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153989 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=dfb236bb15c2a68348468afb4df53b3543e58816, stripped\012- data path=update.no_header.image_extract/usr/lib/libevent_core-2.1.so.6.0.2 pid=153994
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153996 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent_extra.so pid=153987
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/os-release pid=153997 size=0x6e
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=3e801d1771a3aecf91a551e6b31e903aad1f9606, stripped\012- data path=update.no_header.image_extract/usr/lib/libevent_pthreads-2.1.so.6.0.2 pid=153992
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/ssl/openssl.cnf.dist pid=153990 size=0x2a9d
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/lib/libevent_openssl-2.1.so.6 pid=153993
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153997
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=f137bc05001fcdc9b14128102955f67d4ee3ce2b, stripped\012- data path=update.no_header.image_extract/usr/lib/libaio.so.1.0.1 pid=153998
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libevent_extra-2.1.so.6.0.2 pid=153995 size=0x1b8c8
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153990
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/basename pid=153993
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libevent_pthreads-2.1.so.6.0.2 pid=153992 size=0x1508
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x2b5d0 handler=elf32 pid=153996
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/setfattr pid=153997
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x2b5d0] pid=153996
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153992 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153995 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153996 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/factor pid=153990
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libevent_core-2.1.so.6.0.2 pid=153994 size=0x2ea38
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/[ pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/md5sum pid=153999
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x1508 handler=elf32 pid=153992
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153994 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/logname pid=153990
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/paste pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/nohup pid=153999
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x1b8c8 handler=elf32 pid=153995
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x1508] pid=153992
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153992 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x1b8c8] pid=153995
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=dab5e788ac902544f286722634c3e8f48bdcb757, stripped\012- data path=update.no_header.image_extract/usr/lib/libcrypto.so.1.1 pid=153985
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/tty pid=153996
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/env pid=154000
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153995 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/dirname pid=153990
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/who pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/realpath pid=153999
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=47c809fe4a3d0c2826e90ae2573b819a836cec70, stripped\012- data path=update.no_header.image_extract/usr/bin/FileParser pid=153997
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x2ea38 handler=elf32 pid=153994
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/test pid=153996
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x2ea38] pid=153994
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB shared object, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, BuildID[sha1]=a5f07fd04dea78e6a2baca8e441e06143bbd8bb1, stripped\012- data path=update.no_header.image_extract/usr/lib/libssl.so.1.1 pid=153987
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/cksum pid=153990
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/unlink pid=153999
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153994 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/cryptpw pid=153993
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/awk pid=153992
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/free pid=153996
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/bin/FileParser pid=153997 size=0x2d64
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/passwd pid=153999
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/bzip2 pid=153990
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/xargs pid=153992
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/hostid pid=153993
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/head pid=153995
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153997 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/nproc pid=153996
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libaio.so.1.0.1 pid=153998 size=0x14dc
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/fold pid=153999
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/yes pid=153993
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/expr pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/sort pid=153995
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/find pid=153996
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153998 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/tail pid=153992
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/sha256sum pid=153994
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/tee pid=153999
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/svok pid=153993
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x2d64 handler=elf32 pid=153997
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/mesg pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/readlink pid=153996
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/less pid=153995
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x2d64] pid=153997
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/truncate pid=153992
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/fallocate pid=153994
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153997 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/diff pid=153999
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/cut pid=153993
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x14dc handler=elf32 pid=153998
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/tr pid=153996
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/svc pid=153995
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libssl.so.1.1 pid=153987 size=0x698c0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=2247eee205a2343744e8f550ad69083533812fe7, stripped\012- data path=update.no_header.image_extract/usr/bin/openssl pid=154000
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/printf pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/du pid=153992
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x14dc] pid=153998
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/hexdump pid=153994
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/id pid=153999
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/[[ pid=153993
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153998 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/seq pid=153996
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153987 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/which pid=153989
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/killall pid=153997
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/mkfifo pid=153994
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/top pid=153993
+2025-10-11 00:46.26 [debug    ] Ignoring special file (link, chrdev, blkdev, fifo, socket, door). path=update.no_header.image_extract/usr/bin/wc pid=153999
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x698c0 handler=elf32 pid=153987
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x698c0] pid=153987
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153987 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153991 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=ELF 32-bit LSB executable, ARM, EABI5 version 1\012-  (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=9dc7680b5fa85e9f31e110a8c176aff7574fedc2, stripped\012- data path=update.no_header.image_extract/usr/bin/xmlwf pid=153995
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0xf648 handler=elf32 pid=153988
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0xf648] pid=153988
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153988 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/bin/xmlwf pid=153995 size=0x5650
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/bin/openssl pid=154000 size=0x80e4c
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153995 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=154000 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x5650 handler=elf32 pid=153995
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x5650] pid=153995
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x80e4c handler=elf32 pid=154000
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x80e4c] pid=154000
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153995 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=154000 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x75e4 handler=elf32 pid=153986
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x75e4] pid=153986
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153986 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/usr/lib/libcrypto.so.1.1 pid=153985 size=0x1ec914
+2025-10-11 00:46.26 [debug    ] Calculating chunk for pattern match handler=elf32 pid=153985 real_offset=0x0 start_offset=0x0
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0x1ec914 handler=elf32 pid=153985
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0x1ec914] pid=153985
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153985 removed_inner_chunk_count=0
+2025-10-11 00:46.26 [debug    ] Detected file-magic            magic=Perl script text executable\012- a /usr/bin/perl script, ASCII text executable path=update.no_header.image_extract/etc/ssl/misc/tsget.pl pid=153996
+2025-10-11 00:46.26 [debug    ] Processing file                path=update.no_header.image_extract/etc/ssl/misc/tsget.pl pid=153996 size=0x19af
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[] pid=153996
+2025-10-11 00:46.26 [debug    ] Found valid chunk              chunk=0x0-0xf8dd0 handler=elf32 pid=153991
+2025-10-11 00:46.26 [debug    ] Ended searching for chunks     all_chunks=[0x0-0xf8dd0] pid=153991
+2025-10-11 00:46.26 [debug    ] Removed inner chunks           outer_chunk_count=1 pid=153991 removed_inner_chunk_count=0

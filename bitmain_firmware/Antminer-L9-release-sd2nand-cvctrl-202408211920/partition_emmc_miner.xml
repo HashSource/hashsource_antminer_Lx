@@ -1,0 +1,13 @@
+<physical_partition size_in_kb="3700000" type="emmc">
+    <partition label="kernel" size_in_kb="16384" file="boot.emmc"/>
+    <partition label="marker" size_in_kb="1024" file=""/>
+    <partition label="minerfs" size_in_kb="32768" file="minerfs.gz" />
+    <!-- <partition label="cfg" size_in_kb="8192" file="cfg.emmc" mountpoint="" type="ext4"/> -->
+    <partition label="sig" size_in_kb="2048" file="sig.bin" />
+    <!-- <partition label="log" size_in_kb="14336" file="log.emmc" mountpoint="" type="ext4" /> -->
+    <!-- <partition label="upgrade-ramfs" size_in_kb="16384" file="upgrade-ramfs.gz" /> -->
+    <!-- <partition label="upgrade-file" size_in_kb="57344" file="upgrade-file.emmc" mountpoint="" type="ext4"/> -->
+    <partition label="config" size_in_kb="8912" file="config.emmc" mountpoint="/config" type="ext4" />
+    <partition label="miner" size_in_kb="8912" file="miner.emmc" mountpoint="/miner" type="ext4" />
+    <partition label="nvdata" size_in_kb="1048576" file="nvdata.emmc" mountpoint="/nvdata" type="ext4" />
+</physical_partition>

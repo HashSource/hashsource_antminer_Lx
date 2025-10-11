@@ -1,0 +1,27 @@
+{
+        "pools" : [
+        {
+	"url" : "",
+	"user" : "",
+	"pass" : ""
+        },
+        {
+	"url" : "",
+	"user" : "",
+	"pass" : ""
+        },
+        {
+	"url" : "",
+	"user" : "",
+	"pass" : ""
+        }
+        ],
+
+	"algo" : "ltc",
+	"bitmain-fan-ctrl" : false,
+	"bitmain-fan-pwm" : "100",
+	"bitmain-freq" : "1850",
+	"bitmain-voltage" : "1470",
+	"bitmain-work-mode" : "0",
+	"bitmain-freq-level" : "100"
+}
