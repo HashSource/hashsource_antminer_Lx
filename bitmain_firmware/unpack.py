@@ -229,6 +229,114 @@ def extractLinuxImages(basePath: str):
             continue
 
 
+def extractBootBin(basePath: str):
+    linuxImages = glob.glob(f"{basePath}/**/BOOT.bin", recursive=True)
+    for image in linuxImages:
+        print(f"Processing: {image}")
+        imageDir = os.path.dirname(image)
+
+        try:
+            subprocess.run(
+                [
+                    "unblob",
+                    os.path.abspath(os.path.normpath(image)),
+                ],
+                cwd=os.path.abspath(os.path.normpath(imageDir)),
+            )
+        except Exception:
+            continue
+
+
+def removeCVITEKHeader(image_path: str):
+    """
+    Remove CVITEK header from image file.
+    Header format (64 bytes total):
+    - 4 Bytes: Magic ("CIMG")
+    - 4 Bytes: Version
+    - 4 Bytes: Chunk header size
+    - 4 Bytes: Total chunks
+    - 4 Bytes: File size
+    - 32 Bytes: Extra Flags
+    - 12 Bytes: Reserved
+    """
+    header_free_image_path = image_path.replace(".gz", ".no_header.gz")
+    print(f"Processing: {image_path}")
+
+    try:
+        with open(image_path, "rb") as source_image:
+            # Check for CIMG magic bytes
+            magic = source_image.read(4)
+            if magic != b"CIMG":
+                print(
+                    f"Warning: {image_path} is not a CVITEK image (missing CIMG magic)"
+                )
+                return
+
+            with open(header_free_image_path, "wb") as processed_image:
+                source_image.seek(64)  # Skip the 64-byte header
+                # Skip chunk headers while reading data
+                while True:
+                    chunk_header = source_image.read(64)
+                    if not chunk_header:
+                        break
+                    data_chunk = source_image.read(100 * 1024 * 1024)  # 100MB chunks
+                    if not data_chunk:
+                        break
+                    processed_image.write(data_chunk)
+        print(f"Created: {header_free_image_path}")
+    except Exception as e:
+        print(f"Error processing {image_path}: {e}")
+
+
+def removeCVITEKHeaders(basePath: str):
+    """Process all minerfs.gz files and remove CVITEK headers"""
+    minerfsFiles = glob.glob(f"{basePath}/**/minerfs.gz", recursive=True)
+
+    cpu_count = multiprocessing.cpu_count()
+    with ProcessPoolExecutor(max_workers=cpu_count) as executor:
+        executor.map(removeCVITEKHeader, minerfsFiles)
+
+
+def extractCVITEKGzipFiles(basePath: str):
+    """Extract CVITEK gzip files (minerfs.no_header.gz)"""
+    gzipFiles = glob.glob(f"{basePath}/**/minerfs.no_header.gz", recursive=True)
+    for gzipFile in gzipFiles:
+        gzipDir = os.path.dirname(gzipFile)
+        print(f"Processing: {gzipFile}")
+
+        try:
+            subprocess.run(
+                [
+                    "gunzip",
+                    "--force",
+                    "--keep",
+                    os.path.abspath(os.path.normpath(gzipFile)),
+                ],
+                cwd=os.path.abspath(os.path.normpath(gzipDir)),
+            )
+        except Exception:
+            continue
+
+
+def extractCVITEKImages(basePath: str):
+    """Extract CVITEK images (minerfs.no_header)"""
+    minerfsImages = glob.glob(f"{basePath}/**/minerfs.no_header", recursive=True)
+    for image in minerfsImages:
+        print(f"Processing: {image}")
+        imageDir = os.path.dirname(image)
+
+        try:
+            subprocess.run(
+                [
+                    "unblob",
+                    os.path.abspath(os.path.normpath(image)),
+                ],
+                cwd=os.path.abspath(os.path.normpath(imageDir)),
+            )
+        except Exception:
+            continue
+
+
 if __name__ == "__main__":
     print("__main__")
 
@@ -244,4 +352,8 @@ if __name__ == "__main__":
     # removeUImageHeaders(basePath)
     # extractGzipFiles(basePath)
     # extractLinuxImages(basePath)
-    extractDatafileImages(basePath)
+    # extractDatafileImages(basePath)
+    # extractBootBin(basePath)
+    # removeCVITEKHeaders(basePath)
+    # extractCVITEKGzipFiles(basePath)
+    extractCVITEKImages(basePath)
