@@ -1,0 +1,41 @@
+int __fastcall sub_EF2B0(int a1, unsigned __int8 *a2, unsigned int a3, unsigned __int8 *a4, unsigned int a5)
+{
+  char v10[12]; // [sp+24h] [bp+14h] BYREF
+  _BYTE v11[12]; // [sp+824h] [bp+814h] BYREF
+  unsigned __int8 v12; // [sp+1827h] [bp+1817h] BYREF
+  int v13; // [sp+1828h] [bp+1818h]
+  unsigned __int8 i; // [sp+182Eh] [bp+181Eh]
+  unsigned __int8 j; // [sp+182Fh] [bp+181Fh]
+
+  j = 0;
+  v13 = 0;
+  v12 = 0;
+  pthread_mutex_lock(&power_mutex);
+  for ( i = 0; i <= 2u; ++i )
+  {
+    for ( j = 0; j < a3; iic_write_reg(a1, &v12, 1, (int)&a2[j++], 1u) )
+      ;
+    usleep(0x61A80u);
+    for ( j = 0; j < a5; iic_read_reg(a1, &v12, 1, (int)&a4[j++], 1u) )
+      ;
+    usleep((__useconds_t)&stru_1869C.st_value);
+    v13 = sub_EEEF8(a2, a4, a5);
+    if ( !v13 )
+      break;
+    snprintf(v10, 0x800u, "Send power cmd(0x%02x) failed, retry %d\n", a2[3], i);
+    V_LOCK();
+    logfmt_raw(v11, 0x1000u, 0, v10);
+    V_UNLOCK();
+    zlog(
+      g_zc,
+      "/home/xingfeiwang/work/share-d/code/1489/godminer/backend/device/hal/power/bitmain_power_APW9.c",
+      95,
+      "exec_power_cmd",
+      14,
+      175,
+      100,
+      v11);
+  }
+  pthread_mutex_unlock(&power_mutex);
+  return v13;
+}

@@ -1,0 +1,20 @@
+int __fastcall open_core_clk_tops(int a1)
+{
+  _BYTE v3[4096]; // [sp+18h] [bp+8h] BYREF
+
+  V_LOCK();
+  logfmt_raw(v3, 0x1000u, 0, "%s...", "open_core_clk_tops");
+  V_UNLOCK();
+  zlog(
+    g_zc,
+    "/home/xingfeiwang/work/share-d/code/1489/godminer/backend/backend_eth/backend_eth.c",
+    83,
+    "open_core_clk_tops",
+    18,
+    239,
+    60,
+    v3);
+  sub_78860(a1, 22, -2147483641);
+  usleep(0x2710u);
+  return 0;
+}

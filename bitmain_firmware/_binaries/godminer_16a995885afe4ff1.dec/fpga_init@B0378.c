@@ -1,0 +1,133 @@
+int fpga_init()
+{
+  int v1; // r0
+  int v2; // r0
+  int v3; // r0
+  char s[2048]; // [sp+10h] [bp-1800h] BYREF
+  char v5[4096]; // [sp+810h] [bp-1000h] BYREF
+
+  if ( dword_16C0BC )
+    return 0;
+  dword_16C0C0 = open64("/dev/axi_fpga_dev");
+  if ( dword_16C0C0 < 0 )
+  {
+    snprintf(s, 0x800u, "/dev/axi_fpga_dev open failed. fd = %d\n", dword_16C0C0);
+    V_LOCK();
+    logfmt_raw(v5, 0x1000u, 0, s);
+    V_UNLOCK();
+    zlog(
+      g_zc,
+      "/workspace/jenkins/jenkins/workspace/Antminer_L7_release_USE_APW121417b/build/rootfs/buildroot/tmp/release/build/g"
+      "odminer-origin_master/backend/device/hal/platform/7007/7007_fpga.c",
+      180,
+      "fpga_init",
+      9,
+      45,
+      100,
+      v5);
+    return -1;
+  }
+  else
+  {
+    v1 = mmap64(0, 4608, 3, 1, dword_16C0C0);
+    dword_16C0C4 = v1;
+    if ( v1 )
+    {
+      snprintf(s, 0x800u, "fpga_init success. axi_fpga_addr_hal = 0x%x\n", v1);
+      V_LOCK();
+      logfmt_raw(v5, 0x1000u, 0, s);
+      V_UNLOCK();
+      zlog(
+        g_zc,
+        "/workspace/jenkins/jenkins/workspace/Antminer_L7_release_USE_APW121417b/build/rootfs/buildroot/tmp/release/build"
+        "/godminer-origin_master/backend/device/hal/platform/7007/7007_fpga.c",
+        180,
+        "fpga_init",
+        9,
+        59,
+        20,
+        v5);
+      v2 = open64("/dev/fpga_mem");
+      if ( v2 < 0 )
+      {
+        snprintf(s, 0x800u, "/dev/fpga_mem open failed. fd_fpga_mem_hal = %d\n", v2);
+        V_LOCK();
+        logfmt_raw(v5, 0x1000u, 0, s);
+        V_UNLOCK();
+        zlog(
+          g_zc,
+          "/workspace/jenkins/jenkins/workspace/Antminer_L7_release_USE_APW121417b/build/rootfs/buildroot/tmp/release/bui"
+          "ld/godminer-origin_master/backend/device/hal/platform/7007/7007_fpga.c",
+          180,
+          "fpga_init",
+          9,
+          64,
+          100,
+          v5);
+        perror("open");
+        return -1;
+      }
+      else
+      {
+        v3 = mmap64(0, 0x1000000, 3, 1, v2);
+        dword_16C0C8 = v3;
+        if ( v3 )
+        {
+          snprintf(s, 0x800u, "mmap fpga_mem_addr_hal = 0x%x\n", v3);
+          V_LOCK();
+          logfmt_raw(v5, 0x1000u, 0, s);
+          V_UNLOCK();
+          zlog(
+            g_zc,
+            "/workspace/jenkins/jenkins/workspace/Antminer_L7_release_USE_APW121417b/build/rootfs/buildroot/tmp/release/b"
+            "uild/godminer-origin_master/backend/device/hal/platform/7007/7007_fpga.c",
+            180,
+            "fpga_init",
+            9,
+            76,
+            40,
+            v5);
+          dword_16C0BC = 1;
+          return 0;
+        }
+        else
+        {
+          snprintf(s, 0x800u, "mmap fpga_mem_addr_hal failed. fpga_mem_addr_hal = 0x%x\n", 0);
+          V_LOCK();
+          logfmt_raw(v5, 0x1000u, 0, s);
+          V_UNLOCK();
+          zlog(
+            g_zc,
+            "/workspace/jenkins/jenkins/workspace/Antminer_L7_release_USE_APW121417b/build/rootfs/buildroot/tmp/release/b"
+            "uild/godminer-origin_master/backend/device/hal/platform/7007/7007_fpga.c",
+            180,
+            "fpga_init",
+            9,
+            73,
+            100,
+            v5);
+          return -1;
+        }
+      }
+    }
+    else
+    {
+      snprintf(s, 0x800u, "mmap axi_fpga_addr_hal failed. axi_fpga_addr_hal = 0x%x\n", 0);
+      V_LOCK();
+      logfmt_raw(v5, 0x1000u, 0, s);
+      V_UNLOCK();
+      zlog(
+        g_zc,
+        "/workspace/jenkins/jenkins/workspace/Antminer_L7_release_USE_APW121417b/build/rootfs/buildroot/tmp/release/build"
+        "/godminer-origin_master/backend/device/hal/platform/7007/7007_fpga.c",
+        180,
+        "fpga_init",
+        9,
+        53,
+        100,
+        v5);
+      close(dword_16C0C0);
+      return -2;
+    }
+  }
+}

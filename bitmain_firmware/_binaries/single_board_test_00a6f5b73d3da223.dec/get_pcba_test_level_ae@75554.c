@@ -1,0 +1,5 @@
+int __fastcall get_pcba_test_level_ae(int a1, _DWORD *a2)
+{
+  *a2 = *(_DWORD *)(a1 + 768);
+  return 0;
+}

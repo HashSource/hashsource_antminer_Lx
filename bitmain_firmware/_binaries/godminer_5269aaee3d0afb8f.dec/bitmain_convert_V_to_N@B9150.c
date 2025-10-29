@@ -1,0 +1,52 @@
+int bitmain_convert_V_to_N()
+{
+  double v0; // d0
+  int v1; // r5
+  int v2; // r3
+  _DWORD *v3; // r3
+  int v4; // r1
+  char v6[4096]; // [sp+10h] [bp-1000h] BYREF
+
+  v1 = bitmain_convert_V_to_N_calibration();
+  V_LOCK();
+  LOWORD(v2) = 712;
+  HIWORD(v2) = (unsigned int)"nvalid!" >> 16;
+  logfmt_raw(v6, 0x1000u, 0, v2, (int)(1280.57782 - v0 * 73.979365), v1);
+  V_UNLOCK();
+  LOWORD(v3) = -14756;
+  HIWORD(v3) = (unsigned int)&unk_16E68C >> 16;
+  LOWORD(v4) = 212;
+  HIWORD(v4) = (unsigned int)"start listen on 6060 ..." >> 16;
+  zlog(*v3, v4, 166, "bitmain_convert_V_to_N", 22, 549, 60, v6);
+  if ( v1 <= 0 )
+  {
+    switch ( dword_16C558 )
+    {
+      case 'A':
+      case 'B':
+        v1 = (int)(765.411764 - v0 * 35.833333);
+        break;
+      case 'C':
+        v1 = (int)(933.240365 - v0 * 59.806034);
+        break;
+      case 'a':
+        v1 = (int)(1144.50226 - v0 * 52.243589);
+        break;
+      case 'q':
+      case 'r':
+        v1 = (int)(1190.93534 - v0 * 78.742588);
+        break;
+      case 's':
+      case 'x':
+        v1 = (int)(1280.57782 - v0 * 73.979365);
+        break;
+      case 't':
+        v1 = (int)(1156.10754 - v0 * 76.0904922);
+        break;
+      default:
+        v1 = -1;
+        break;
+    }
+  }
+  return v1;
+}

@@ -1,0 +1,46 @@
+int __fastcall sub_19490(int *a1, int *a2, int *a3)
+{
+  int v3; // r3
+  unsigned int v4; // r12
+  unsigned int v5; // r6
+  int v6; // r0
+  int v7; // r3
+  unsigned int v8; // r1
+  int v9; // r12
+  int v10; // r3
+  int result; // r0
+
+  v3 = (int)a3;
+  if ( a3 )
+    v3 = 1;
+  if ( !a2 )
+    v3 = 0;
+  if ( !a1 )
+    v3 = 0;
+  if ( !v3 )
+    sub_10788();
+  v4 = a1[1];
+  if ( v4 > 0x3B9AC9FF || (v5 = a2[1], v5 > 0x3B9AC9FF) )
+    sub_10788();
+  v6 = *a1;
+  v7 = *a2;
+  if ( (v6 < 0 || v7 < 0) && (int)(((unsigned int)v7 + (unsigned __int64)(unsigned int)v6) >> 32) >= 1 )
+    return 41;
+  v8 = v4 + v5;
+  v9 = 999999999;
+  v10 = v7 + v6;
+  *a3 = v10;
+  a3[1] = v8;
+  if ( v8 > 0x3B9AC9FF )
+  {
+    ++v10;
+    v9 = -1000000000;
+  }
+  result = 0;
+  if ( v8 > 0x3B9AC9FF )
+  {
+    *a3 = v10;
+    a3[1] = v8 + v9;
+  }
+  return result;
+}

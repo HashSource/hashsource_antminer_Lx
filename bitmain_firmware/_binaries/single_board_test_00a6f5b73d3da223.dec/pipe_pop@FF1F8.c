@@ -1,0 +1,20 @@
+unsigned int __fastcall pipe_pop(_DWORD *a1, char *a2, int a3)
+{
+  size_t v7; // [sp+10h] [bp+10h]
+  unsigned int v8; // [sp+14h] [bp+14h]
+  unsigned int v9; // [sp+18h] [bp+18h]
+  size_t v10; // [sp+1Ch] [bp+1Ch]
+
+  v8 = sub_FE384((int)a1);
+  v10 = v8 * a3;
+  v9 = 0;
+  do
+  {
+    v7 = sub_FF0EC(a1, a2, v10);
+    a2 += v7;
+    v9 += v7;
+    v10 -= v7;
+  }
+  while ( v7 && v10 );
+  return v9 / v8;
+}
