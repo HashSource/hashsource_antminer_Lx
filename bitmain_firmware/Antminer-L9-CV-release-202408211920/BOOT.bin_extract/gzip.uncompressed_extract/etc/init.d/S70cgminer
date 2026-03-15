@@ -1,0 +1,170 @@
+#!/bin/sh
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/bin/godminer
+NAME=godminer
+DESC="Godminer daemon"
+
+#set -e
+#set -x
+test -x "$DAEMON" || exit 0
+
+# RED LED: GPIO434
+if [ ! -d /sys/class/gpio/gpio434 ]; then
+    echo 434 > /sys/class/gpio/export
+    echo out > /sys/class/gpio/gpio434/direction
+    echo 0 > /sys/class/gpio/gpio434/value
+fi
+
+# GREEN LED: GPIO435
+if [ ! -d /sys/class/gpio/gpio435 ]; then
+    echo 435 > /sys/class/gpio/export
+    echo out > /sys/class/gpio/gpio435/direction
+    echo 0 > /sys/class/gpio/gpio435/value
+fi
+
+do_start() {
+    sleep 2s
+
+    chip_update_time_path="/config/chipversion"
+    new_version=$(sed -n '5p' "/usr/bin/compile_time" | awk '{print $NF}')
+    part=$(sed -n '6p' "/usr/bin/compile_time" | awk '{print $NF}')
+    last_version=0
+
+    PARAMS="--version /usr/bin/compile_time"
+    echo PARAMS = $PARAMS
+    #wait ethernet stable
+    sleep 30
+
+    #check chip update
+    if [ -f ${chip_update_time_path} ]
+    then
+        last_version=$(sed -n '1p' ${chip_update_time_path} | awk '{print $NF}')
+    fi
+
+    if [ ${new_version} -gt ${last_version} ]
+    then
+        echo "Start updating "${part}
+
+        s="$(ps | grep S52miner_act | grep -v 'grep S52miner_act')"
+
+        if [ x${part} == x"app" ]
+        then
+            if [ ! -z "$s" ]
+            then
+                killall S52miner_act
+            fi
+            /usr/bin/godminer --version /usr/bin/compile_time --config /config/cgminer.conf --api-remote --chip-update-xmr app
+        elif [ x${part} == x"all" ]
+        then
+            if [ ! -z "$s" ]
+            then
+                killall S52miner_act
+            fi
+            /usr/bin/godminer --version /usr/bin/compile_time --config /config/cgminer.conf --api-remote --chip-update-xmr fir
+        fi
+
+        if [ $? -eq 0 ]
+        then
+            echo "Chip Last Version: ${new_version}" > ${chip_update_time_path}
+        else
+            echo "Chip Last Version: 0" > ${chip_update_time_path}
+        fi
+
+        m="$(ps | grep S52miner_act | grep -v 'grep S52miner_act')"
+        if [ -z "$m" ]
+        then
+            /etc/init.d/S52miner_act start &
+        fi
+    fi
+
+    a="$(ps | grep godminer | grep -v 'grep godminer')"
+    if [ ! -z "$a" ]
+    then
+        killall godminer
+    fi
+
+    start-stop-daemon -b --start --exec $DAEMON -- $PARAMS --config /config/cgminer.conf --api-remote
+}
+
+do_logrotate_stop()
+{
+    PIDS=`ps | grep bitmain_logrotate | grep -v "grep" | awk '{print $1}'`
+
+    if [ ! -z "$PIDS" ];then
+        for PID in $PIDS
+        do
+            kill $PID
+        done
+    else
+        echo "Did Not Find bitmain_logrotate Process"
+        return
+    fi
+
+    echo "Waiting For bitmain_logrotate To Exit"
+    for i in `seq 60`
+    do
+        PIDS=`ps | grep bitmain_logrotate | grep -v "grep" | awk '{print $1}'`
+
+        if [ -z "$PIDS" ];then
+            echo "bitmain_logrotate Has Been Stopped"
+            break
+        fi
+
+        sleep 1
+    done
+}
+
+do_logrotate_start()
+{
+    PIDS=`ps | grep bitmain_logrotate | grep -v "grep" | awk '{print $1}'`
+    if [ -z "$PIDS" ];then
+        echo "bitmain_logrotate Start"
+        /usr/bin/bitmain_logrotate &
+    else
+        echo "The bitmain_logrotate Process Has Been Started"
+    fi
+}
+
+do_logrotate_restart()
+{
+    do_logrotate_stop
+    do_logrotate_start
+}
+
+do_stop() {
+    start-stop-daemon --stop --exec $DAEMON || true
+}
+
+case "$1" in
+  start)
+        echo -n "Starting $DESC: "
+	do_logrotate_start
+        do_start
+        echo "$NAME."
+        ;;
+  stop)
+        echo -n "Stopping $DESC: "
+        do_stop
+	do_logrotate_stop
+        echo "$NAME."
+        ;;
+  restartlog)
+        echo -n "Restarting $DESC: "
+        do_logrotate_restart
+        echo "$NAME."
+        ;;
+  restart|force-reload)
+        echo -n "Restarting $DESC: "
+        do_stop
+        do_start
+        echo "$NAME."
+        ;;
+  *)
+        N=/etc/init.d/$NAME
+        echo "Usage: $N {start|stop|restart|force-reload}" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

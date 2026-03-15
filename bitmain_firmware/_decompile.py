@@ -1,65 +1,45 @@
 #!/usr/bin/env python3
-"""Automated binary decompilation using Ghidra with library auto-import."""
+"""Automated binary decompilation using ghidrecomp, RetDec, and IDA Pro."""
 
 from __future__ import annotations
 
 import logging
-import os
 import re
-import shutil
 import subprocess
 import sys
 from dataclasses import dataclass
 from datetime import datetime
 from functools import lru_cache
 from pathlib import Path
-from typing import Final, Iterator
+from typing import Final
 
 # Constants
 BINARIES_DIR: Final = Path("_binaries")
-PROJECT_DIR: Final = Path("_binaries/_ghidra_project")
-PROJECT_NAME: Final = "bitmain_firmware"
-OUTPUT_PATH: Final = Path("_binaries/_ghidra")
+GHIDRA_OUTPUT_PATH: Final = Path("_binaries/_ghidra")
+RETDEC_OUTPUT_PATH: Final = Path("_binaries/_retdec")
 LOG_FILE: Final = Path("_decompile.log")
-LIB_COPIES_DIR: Final = BINARIES_DIR / "_lib_copies"
 
 TIMEOUT_SECONDS: Final = 300
-MAX_CPU_CORES: Final = 16
 FILE_CHECK_TIMEOUT: Final = 2
-READELF_TIMEOUT: Final = 5
-
-GHIDRA_PATH: Final = Path("/home/danielsokil/Downloads/ghidra_11.4.2_PUBLIC")
-ANALYZE_HEADLESS: Final = GHIDRA_PATH / "support" / "analyzeHeadless"
 
 RETDEC_PATH: Final = Path("/home/danielsokil/Lab/avast/retdec/retdec-install")
 RETDEC_DECOMPILER: Final = RETDEC_PATH / "bin" / "retdec-decompiler"
-RETDEC_OUTPUT_PATH: Final = Path("_binaries/_retdec")
 
 # Regex patterns
-SONAME_PATTERN: Final = re.compile(r"Library soname: \[([^\]]+)\]")
-NEEDED_PATTERN: Final = re.compile(r"Shared library: \[([^\]]+)\]")
 HASH_SUFFIX_PATTERN: Final = re.compile(r"^(.+?)_[a-f0-9]+")
 
 # Bitmain-specific binary name patterns (whitelist)
 BITMAIN_BINARIES: Final = {
-    "accelerometer",
     "antlogin",
     "bitmain_axi.ko",
     "bmminer",
     "cgminer-api",
     "cgminer",
-    "devmem2",
-    "eeprog",
-    "eeprom",
-    "eepromer",
     "FileParser",
     "fpga_mem_driver.ko",
     "fpgaminer-api",
     "godminer",
     "id2mac",
-    "lcd_test",
-    "lcd12864i_driver.ko",
-    "lcd12864i",
     "led-blink",
     "miner-monitor",
     "monitor-ipsig",
@@ -67,6 +47,10 @@ BITMAIN_BINARIES: Final = {
     "single_board_test",
     "single-board-test",
     "update-daemon",
+    "uart_trans.ko",
+    "cv183x_wdt.ko",
+    "cv183x_pwm.ko",
+    "configfs.ko",
 }
 
 
@@ -91,6 +75,8 @@ class DecompileStats:
     executables_failed: int = 0
     retdec_done: int = 0
     retdec_failed: int = 0
+    haruspex_done: int = 0
+    haruspex_failed: int = 0
 
     @property
     def total_processed(self) -> int:
@@ -130,160 +116,6 @@ def is_elf(path: Path) -> bool:
         return False
 
 
-@lru_cache(maxsize=1024)
-def get_soname(path: Path) -> str | None:
-    """Extract SONAME from ELF shared library using readelf.
-
-    Ghidra links libraries by their SONAME, not filename.
-
-    Args:
-        path: Path to ELF file
-
-    Returns:
-        SONAME if found, None otherwise
-    """
-    try:
-        result = subprocess.run(
-            ["readelf", "-d", str(path)],
-            capture_output=True,
-            text=True,
-            timeout=READELF_TIMEOUT,
-            check=False,
-        )
-        if match := SONAME_PATTERN.search(result.stdout):
-            return match.group(1)
-        return None
-    except (subprocess.TimeoutExpired, FileNotFoundError, OSError) as e:
-        logging.debug(f"Could not extract SONAME from {path}: {e}")
-        return None
-
-
-@lru_cache(maxsize=1024)
-def get_library_dependencies(path: Path) -> set[str]:
-    """Extract direct library dependencies from ELF file using readelf.
-
-    Args:
-        path: Path to ELF file
-
-    Returns:
-        Set of library names (SONAMEs) that this binary depends on
-    """
-    try:
-        result = subprocess.run(
-            ["readelf", "-d", str(path)],
-            capture_output=True,
-            text=True,
-            timeout=READELF_TIMEOUT,
-            check=False,
-        )
-        # Extract all NEEDED entries (shared library dependencies)
-        return {match.group(1) for match in NEEDED_PATTERN.finditer(result.stdout)}
-    except (subprocess.TimeoutExpired, FileNotFoundError, OSError) as e:
-        logging.debug(f"Could not extract dependencies from {path}: {e}")
-        return set()
-
-
-def resolve_all_dependencies(lib_name: str, resolved: set[str]) -> None:
-    """Recursively resolve all transitive dependencies of a library.
-
-    Args:
-        lib_name: Library name (SONAME) to resolve
-        resolved: Set to accumulate all resolved dependencies (modified in-place)
-    """
-    # Avoid infinite recursion
-    if lib_name in resolved:
-        return
-
-    resolved.add(lib_name)
-
-    # Find library file in LIB_COPIES_DIR
-    lib_path = LIB_COPIES_DIR / lib_name
-    if not lib_path.exists():
-        logging.debug(f"Library not found for dependency resolution: {lib_name}")
-        return
-
-    # Get dependencies of this library
-    deps = get_library_dependencies(lib_path)
-
-    # Recursively resolve each dependency
-    for dep in deps:
-        resolve_all_dependencies(dep, resolved)
-
-
-def get_binary_dependencies(binary_path: Path) -> set[str]:
-    """Get all transitive dependencies for a binary.
-
-    Args:
-        binary_path: Path to the binary executable
-
-    Returns:
-        Set of all library names (SONAMEs) needed by this binary
-    """
-    all_deps: set[str] = set()
-
-    # Get direct dependencies
-    direct_deps = get_library_dependencies(binary_path)
-
-    # Recursively resolve each dependency
-    for dep in direct_deps:
-        resolve_all_dependencies(dep, all_deps)
-
-    return all_deps
-
-
-def get_dependency_order(libs: set[str]) -> list[str]:
-    """Sort libraries in dependency order (deepest dependencies first).
-
-    Uses topological sort to ensure dependencies are imported before dependents.
-
-    Args:
-        libs: Set of library names to sort
-
-    Returns:
-        List of library names in import order (dependencies before dependents)
-    """
-    # Build adjacency list: lib -> list of libs it depends on
-    deps_graph: dict[str, list[str]] = {}
-    in_degree: dict[str, int] = {}
-
-    # Initialize
-    for lib in libs:
-        deps_graph[lib] = []
-        in_degree[lib] = 0
-
-    # Build graph
-    for lib in libs:
-        lib_path = LIB_COPIES_DIR / lib
-        if not lib_path.exists():
-            continue
-
-        lib_deps = get_library_dependencies(lib_path)
-        # Only include dependencies that are in our set
-        lib_deps_in_set = lib_deps & libs
-
-        for dep in lib_deps_in_set:
-            deps_graph[lib].append(dep)
-            in_degree[dep] += 1
-
-    # Topological sort using Kahn's algorithm
-    queue: list[str] = [lib for lib in libs if in_degree[lib] == 0]
-    result: list[str] = []
-
-    while queue:
-        # Sort for deterministic output
-        queue.sort()
-        lib = queue.pop(0)
-        result.append(lib)
-
-        for dep in deps_graph[lib]:
-            in_degree[dep] -= 1
-            if in_degree[dep] == 0:
-                queue.append(dep)
-
-    # Reverse to get dependencies-first order
-    return list(reversed(result))
-
-
 def extract_base_name(filename: str) -> str | None:
     """Extract base name from filename with hash suffix.
 
@@ -320,7 +152,6 @@ def has_bitmain_identifier(path: Path) -> bool:
         b"cgminer",  # Mining software
         b"antminer",  # Product line
         b"stratum",  # Mining protocol
-        b"eeprom",  # EEPROM programming tools
     )
 
     try:
@@ -364,126 +195,34 @@ def is_bitmain_binary(path: Path) -> bool:
 
     # Second check: Scan for Bitmain build identifiers (slower, but accurate)
     return has_bitmain_identifier(path)
+    return False
 
 
-def iter_elf_libraries() -> Iterator[Path]:
-    """Iterate over all ELF shared libraries in BINARIES_DIR.
-
-    Yields:
-        Path objects for ELF shared object files
-    """
-    for so_file in BINARIES_DIR.glob("*.so*"):
-        if is_elf(so_file):
-            yield so_file
-
-
-def create_library_copies() -> None:
-    """Create library copies using SONAME for Ghidra linking.
-
-    Ghidra links libraries by SONAME, so we extract the SONAME from each
-    library and use it as the filename. Physical copies are needed because
-    Ghidra cannot resolve symlinks. Duplicates are skipped (first occurrence wins).
-    """
-    logging.info("Creating library copies using SONAME...")
-
-    # Clean and recreate directory
-    if LIB_COPIES_DIR.exists():
-        shutil.rmtree(LIB_COPIES_DIR)
-    LIB_COPIES_DIR.mkdir(parents=True, exist_ok=True)
-
-    copied = skipped = 0
-    for so_file in iter_elf_libraries():
-        # Try to get SONAME first (for shared libraries)
-        lib_name = get_soname(so_file)
-        if not lib_name:
-            # Fallback to filename-based extraction for non-library files
-            lib_name = extract_base_name(so_file.name)
-
-        if lib_name:
-            dest_path = LIB_COPIES_DIR / lib_name
-            if not dest_path.exists():
-                try:
-                    shutil.copy2(so_file, dest_path)
-                    copied += 1
-                except (OSError, shutil.Error) as e:
-                    logging.warning(f"Failed to copy {so_file}: {e}")
-                    skipped += 1
-            else:
-                skipped += 1
-
-    logging.info(f"  Copied {copied} libraries, skipped {skipped} duplicates")
-
-
-def import_to_ghidra(
-    path: Path, *, decompile: bool = False, analyze: bool = True
-) -> bool:
-    """Import file into shared Ghidra project with optional decompilation.
+def decompile_with_ghidra(binary_path: Path) -> bool:
+    """Decompile a binary using ghidrecomp.
 
     Args:
-        path: Path to file to import
-        decompile: Whether to run decompilation script
-        analyze: Whether to run analysis (False for libraries)
+        binary_path: Path to binary to decompile
 
     Returns:
-        True if import succeeded, False otherwise
+        True if decompilation succeeded, False otherwise
     """
     with LOG_FILE.open("a", encoding="utf-8") as log:
         log.write(f"\n{'=' * 80}\n")
-        log.write(f"Processing: {path.name}\n")
+        log.write(f"Ghidra/ghidrecomp Decompiling: {binary_path.name}\n")
         log.write(f"{'-' * 80}\n")
         log.flush()
-
-        lib_search_paths = f"{LIB_COPIES_DIR.absolute()};{BINARIES_DIR.absolute()}"
 
         cmd = [
             "timeout",
             f"{TIMEOUT_SECONDS}s",
-            str(ANALYZE_HEADLESS),
-            str(PROJECT_DIR),
-            PROJECT_NAME,
-            "-import",
-            str(path),
-            "-max-cpu",
-            str(MAX_CPU_CORES),
-            "-librarySearchPaths",
-            lib_search_paths,
-            "-analysisTimeoutPerFile",
-            "300",  # 5 minutes per file analysis timeout
+            "ghidrecomp",
+            str(binary_path),
+            "-o",
+            str(GHIDRA_OUTPUT_PATH),
+            "--project-path",
+            str(BINARIES_DIR / "_ghidra_projects"),
         ]
-
-        # For ELF files, enable linking to existing project libraries
-        if is_elf(path):
-            cmd.extend(
-                [
-                    "-loader",
-                    "ElfLoader",
-                    "-loader-linkExistingProjectLibraries",
-                    "true",
-                ]
-            )
-
-        # Skip analysis for libraries (faster)
-        if not analyze:
-            cmd.append("-noanalysis")
-
-        if decompile:
-            # Export decompiled functions
-            export_decompile = Path(__file__).parent / "_export_decompile.py"
-            if export_decompile.exists():
-                cmd.extend(["-postScript", str(export_decompile)])
-            else:
-                logging.warning(f"Export script not found: {export_decompile}")
-
-            # Export data types (structs, enums, typedefs)
-            export_types = Path(__file__).parent / "_export_types.py"
-            if export_types.exists():
-                cmd.extend(["-postScript", str(export_types)])
-            else:
-                logging.warning(f"Types export script not found: {export_types}")
-
-        # Set environment for Ghidra script
-        env = os.environ.copy()
-        env["GHIDRA_OUTPUT_PATH"] = str(OUTPUT_PATH.absolute())
 
         try:
             with subprocess.Popen(
@@ -492,7 +231,6 @@ def import_to_ghidra(
                 stderr=subprocess.STDOUT,
                 text=True,
                 bufsize=1,
-                env=env,
             ) as process:
                 # Stream output line by line
                 if process.stdout:
@@ -506,14 +244,26 @@ def import_to_ghidra(
             log.flush()
 
             if returncode != 0:
-                logging.error(f"Failed to import {path.name} (code {returncode})")
+                logging.error(
+                    f"ghidrecomp failed to decompile {binary_path.name} (code {returncode})"
+                )
+            else:
+                # Find the output directory created by ghidrecomp
+                output_dir = GHIDRA_OUTPUT_PATH / binary_path.stem
+                logging.info(f"  ghidrecomp output: {output_dir}")
+                # Format any C files in the output directory
+                if output_dir.exists():
+                    for c_file in output_dir.glob("**/*.c"):
+                        format_c_file(c_file)
 
             return returncode == 0
 
         except (subprocess.TimeoutExpired, OSError) as e:
             log.write(f"\nError: {e}\n")
             log.flush()
-            logging.error(f"Exception while importing {path.name}: {e}")
+            logging.error(
+                f"Exception while decompiling {binary_path.name} with ghidrecomp: {e}"
+            )
             return False
 
 
@@ -630,43 +380,68 @@ def decompile_with_retdec(binary_path: Path) -> bool:
             return False
 
 
-def process_files(
-    files: list[Path], label: str, *, decompile: bool = False, analyze: bool = True
-) -> tuple[int, int]:
-    """Process list of files with Ghidra.
+def decompile_with_haruspex(binary_path: Path) -> bool:
+    """Decompile a binary using haruspex/IDA Pro.
+
+    haruspex creates output directories in BINARIES_DIR as <binary_name>.dec/
 
     Args:
-        files: List of file paths to process
-        label: Label for logging (e.g., 'Importing', 'Decompiling')
-        decompile: Whether to decompile files
-        analyze: Whether to analyze files (False for libraries)
+        binary_path: Path to binary to decompile
 
     Returns:
-        Tuple of (success_count, failure_count)
+        True if decompilation succeeded, False otherwise
     """
-    success = fail = 0
-    total = len(files)
+    with LOG_FILE.open("a", encoding="utf-8") as log:
+        log.write(f"\n{'=' * 80}\n")
+        log.write(f"IDA Pro/haruspex Decompiling: {binary_path.name}\n")
+        log.write(f"{'-' * 80}\n")
+        log.flush()
 
-    for i, path in enumerate(files, 1):
-        logging.info(f"[{i}/{total}] {label}: {path.name}")
-        if import_to_ghidra(path, decompile=decompile, analyze=analyze):
-            success += 1
-        else:
-            fail += 1
+        cmd = [
+            "timeout",
+            f"{TIMEOUT_SECONDS}s",
+            "haruspex",
+            binary_path.name,
+        ]
 
-    return success, fail
+        try:
+            with subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1,
+                cwd=BINARIES_DIR,
+            ) as process:
+                # Stream output line by line
+                if process.stdout:
+                    for line in process.stdout:
+                        log.write(line)
+                        log.flush()
 
+                returncode = process.wait()
 
-def get_libraries() -> list[Path]:
-    """Get list of library files from LIB_COPIES_DIR.
+            log.write(f"\nReturn code: {returncode}\n")
+            log.flush()
 
-    Returns:
-        List of library file paths
-    """
-    if not LIB_COPIES_DIR.exists():
-        return []
+            if returncode != 0:
+                logging.error(
+                    f"haruspex failed to decompile {binary_path.name} (code {returncode})"
+                )
+            else:
+                # haruspex creates output as <binary_name>.dec/ in BINARIES_DIR
+                output_dir = BINARIES_DIR / f"{binary_path.name}.dec"
+                logging.info(f"  haruspex output: {output_dir}")
 
-    return sorted(LIB_COPIES_DIR.iterdir())
+            return returncode == 0
+
+        except (subprocess.TimeoutExpired, OSError) as e:
+            log.write(f"\nError: {e}\n")
+            log.flush()
+            logging.error(
+                f"Exception while decompiling {binary_path.name} with haruspex: {e}"
+            )
+            return False
 
 
 def get_executables() -> list[Path]:
@@ -706,41 +481,37 @@ def get_executables() -> list[Path]:
     return executables
 
 
-def print_summary(
-    stats: DecompileStats, lib_imported: int, lib_count: int, exe_count: int
-) -> None:
+def print_summary(stats: DecompileStats, exe_count: int) -> None:
     """Print decompilation summary.
 
     Args:
         stats: Decompilation statistics
-        lib_imported: Number of libraries imported
-        lib_count: Total library count
         exe_count: Total executable count
     """
     logging.info("=" * 60)
     logging.info("SUMMARY")
     logging.info("=" * 60)
-    logging.info(f"Libraries:       {lib_imported}/{lib_count} imported")
     logging.info(f"Ghidra:          {stats.executables_done}/{exe_count} decompiled")
     logging.info(f"RetDec:          {stats.retdec_done}/{exe_count} decompiled")
+    logging.info(f"IDA Pro:         {stats.haruspex_done}/{exe_count} decompiled")
     logging.info(f"Ghidra Failed:   {stats.executables_failed}")
     logging.info(f"RetDec Failed:   {stats.retdec_failed}")
-    logging.info(f"Project:         {PROJECT_DIR / PROJECT_NAME}")
-    logging.info(f"Ghidra Output:   {OUTPUT_PATH}")
+    logging.info(f"IDA Pro Failed:  {stats.haruspex_failed}")
+    logging.info(f"Ghidra Output:   {GHIDRA_OUTPUT_PATH}")
     logging.info(f"RetDec Output:   {RETDEC_OUTPUT_PATH}")
+    logging.info(f"IDA Pro Output:  {BINARIES_DIR}/<binary>.dec/")
     logging.info(f"Log:             {LOG_FILE}")
     logging.info(f"Completed:       {datetime.now().isoformat()}")
     logging.info("=" * 60)
 
 
 def main() -> int:
-    """Main decompilation workflow with on-demand library import.
+    """Main decompilation workflow using ghidrecomp, RetDec, and IDA Pro.
 
     For each Bitmain binary:
-    1. Resolve all library dependencies (direct + transitive)
-    2. Import only the new dependencies not yet imported
-    3. Decompile the binary with Ghidra
-    4. Decompile the binary with RetDec
+    1. Decompile the binary with ghidrecomp (Ghidra)
+    2. Decompile the binary with RetDec
+    3. Decompile the binary with IDA Pro/haruspex
 
     Returns:
         Exit code (0 for success, 1 for failure)
@@ -748,22 +519,32 @@ def main() -> int:
     setup_logging()
 
     logging.info("=" * 60)
-    logging.info("Automated Decompilation (Ghidra + RetDec)")
+    logging.info("Automated Decompilation (ghidrecomp + RetDec + IDA Pro)")
     logging.info("=" * 60)
     logging.info(f"Started: {datetime.now().isoformat()}")
-    logging.info(f"Using Ghidra: {GHIDRA_PATH}")
     logging.info(f"Using RetDec: {RETDEC_PATH}")
-    logging.info(f"Project: {PROJECT_DIR / PROJECT_NAME}")
 
     try:
         # Create necessary directories
-        OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
+        GHIDRA_OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         RETDEC_OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-        PROJECT_DIR.mkdir(parents=True, exist_ok=True)
+        # Note: haruspex creates its own output directories
 
-        # Validate Ghidra installation
-        if not ANALYZE_HEADLESS.exists():
-            logging.error(f"Ghidra analyzeHeadless not found: {ANALYZE_HEADLESS}")
+        # Validate ghidrecomp installation
+        try:
+            result = subprocess.run(
+                ["which", "ghidrecomp"],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if result.returncode != 0:
+                logging.error("ghidrecomp command not found in PATH")
+                return 1
+            else:
+                logging.info(f"Using ghidrecomp: {result.stdout.strip()}")
+        except (FileNotFoundError, OSError):
+            logging.error("Failed to check for ghidrecomp")
             return 1
 
         # Validate RetDec installation
@@ -771,60 +552,45 @@ def main() -> int:
             logging.error(f"RetDec decompiler not found: {RETDEC_DECOMPILER}")
             return 1
 
-        # Create library copies with SONAME for linking
-        create_library_copies()
+        # Validate haruspex installation
+        try:
+            result = subprocess.run(
+                ["which", "haruspex"],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if result.returncode != 0:
+                logging.warning("haruspex command not found in PATH")
+                logging.warning("IDA Pro decompilation will be skipped")
+                haruspex_available = False
+            else:
+                logging.info(f"Using haruspex: {result.stdout.strip()}")
+                haruspex_available = True
+        except (FileNotFoundError, OSError):
+            logging.warning(
+                "Failed to check for haruspex - IDA Pro decompilation will be skipped"
+            )
+            haruspex_available = False
 
         # Get Bitmain-specific executables
         executables = get_executables()
 
-        # Track imported libraries (to avoid duplicates)
-        imported_libraries: set[str] = set()
-        lib_import_ok = 0
-        lib_import_fail = 0
-
-        # Process each executable: import dependencies, then decompile
-        exe_ok = exe_fail = 0
+        # Process each executable with all three decompilers
+        ghidra_ok = ghidra_fail = 0
         retdec_ok = retdec_fail = 0
+        haruspex_ok = haruspex_fail = 0
         total = len(executables)
 
         for i, exe_path in enumerate(executables, 1):
             logging.info(f"\n[{i}/{total}] Processing: {exe_path.name}")
 
-            # Get all dependencies for this binary
-            deps = get_binary_dependencies(exe_path)
-            new_deps = deps - imported_libraries
-
-            if new_deps:
-                # Sort dependencies in topological order (deepest dependencies first)
-                deps_ordered = get_dependency_order(new_deps)
-                logging.info(
-                    f"  Importing {len(deps_ordered)} new dependencies in dependency order..."
-                )
-
-                for dep in deps_ordered:
-                    dep_path = LIB_COPIES_DIR / dep
-                    if dep_path.exists():
-                        if import_to_ghidra(dep_path, analyze=False):
-                            imported_libraries.add(dep)
-                            lib_import_ok += 1
-                            logging.debug(f"    ✓ {dep}")
-                        else:
-                            lib_import_fail += 1
-                            logging.warning(f"  Failed to import dependency: {dep}")
-                    else:
-                        logging.debug(f"  Dependency not found: {dep}")
+            # Decompile the executable with ghidrecomp (Ghidra)
+            logging.info(f"  Decompiling with ghidrecomp: {exe_path.name}...")
+            if decompile_with_ghidra(exe_path):
+                ghidra_ok += 1
             else:
-                logging.info("  All dependencies already imported")
-
-            # Decompile the executable with Ghidra
-            logging.info(f"  Decompiling with Ghidra: {exe_path.name}...")
-            if import_to_ghidra(exe_path, decompile=True):
-                exe_ok += 1
-                # Format the generated C file
-                ghidra_output = OUTPUT_PATH / f"{exe_path.stem}.c"
-                format_c_file(ghidra_output)
-            else:
-                exe_fail += 1
+                ghidra_fail += 1
 
             # Decompile the executable with RetDec
             logging.info(f"  Decompiling with RetDec: {exe_path.name}...")
@@ -833,9 +599,19 @@ def main() -> int:
             else:
                 retdec_fail += 1
 
+            # Decompile the executable with IDA Pro/haruspex (if available)
+            if haruspex_available:
+                logging.info(f"  Decompiling with IDA Pro/haruspex: {exe_path.name}...")
+                if decompile_with_haruspex(exe_path):
+                    haruspex_ok += 1
+                else:
+                    haruspex_fail += 1
+
         # Print summary
-        stats = DecompileStats(exe_ok, exe_fail, retdec_ok, retdec_fail)
-        print_summary(stats, lib_import_ok, lib_import_ok + lib_import_fail, total)
+        stats = DecompileStats(
+            ghidra_ok, ghidra_fail, retdec_ok, retdec_fail, haruspex_ok, haruspex_fail
+        )
+        print_summary(stats, total)
 
         return 0 if stats.total_failed == 0 else 1
 

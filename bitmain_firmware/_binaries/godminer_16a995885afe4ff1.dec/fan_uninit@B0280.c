@@ -1,4 +1,0 @@
-void fan_uninit()
-{
-  ;
-}

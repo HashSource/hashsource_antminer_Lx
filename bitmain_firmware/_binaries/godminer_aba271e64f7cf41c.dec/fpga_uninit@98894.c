@@ -1,4 +1,0 @@
-void fpga_uninit()
-{
-  ;
-}
